@@ -1,7 +1,6 @@
 import altair as alt
 import numpy as np
 import pandas as pd
-import json
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
