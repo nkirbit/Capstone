@@ -22,7 +22,7 @@ def get_data(state):
 
     ###GET STATE POPULATION
     pops = pd.read_csv('https://raw.githubusercontent.com/COVID19Tracking/associated-data/master/us_census_data/us_census_2018_population_estimates_states.csv')
-    pop = pops[pops['state_name'] == state]['population'][0]
+    pop = pops[pops['state_name'] == state]['population'].values[0]
     ###
     return state_df, pop, date_string
 
