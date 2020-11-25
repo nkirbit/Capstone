@@ -25,7 +25,7 @@ def prediction_setup(phrase,state_df,state,state_pop):
     endday = datetime.date(2020, 11, 24)
     numdays = (endday - startday).days
     date_list = [startday + datetime.timedelta(days=x) for x in range(numdays)]
-    recent = pd.read_csv(f'recent_data\{phrase}_recent.csv')
+    recent = pd.read_csv(f'recent_data/{phrase}_recent.csv')
     recent.columns = ['State'] + date_list
     melted = recent.melt(id_vars="State",value_vars=date_list)
     melted["Date"] = pd.to_datetime(melted['variable'])
