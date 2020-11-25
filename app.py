@@ -20,8 +20,7 @@ def index():
 
 @app.route('/make_chart', methods=['GET', 'POST'])
 def make_chart():
-    business, state = app.vars['business'], app.vars['state']
-    model = build_model.generate_model(business)
+    model = build_model.generate_model(app.vars['business'])
     coefs = model.params[1:5]
     average = sum(coefs)/4
     table_values, f_p_value, output_string = model_analysis.do_some_analysis(model,state,business)
