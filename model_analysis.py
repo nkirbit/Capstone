@@ -1,3 +1,5 @@
+
+
 def do_some_analysis(model,state,business):
     hypothesis = '(lag(x, 1, num_states) = lag(x, 2, num_states) = \
     lag(x, 3, num_states) = lag(x, 4, num_states) = 0)'
