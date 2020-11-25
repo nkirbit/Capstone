@@ -1,0 +1,110 @@
+* [33mcommit 5414ebe9dae6b8242b0c02bd16718141be1b6f3d[m[33m ([m[1;36mHEAD -> [m[1;32madding_plots[m[33m, [m[1;31morigin/make_graphs[m[33m, [m[1;32mmake_graphs[m[33m)[m
+[31m|[m Author: Nick Kirby <nickkirby317@gmail.com>
+[31m|[m Date:   Wed Nov 25 03:36:56 2020 -0500
+[31m|[m 
+[31m|[m     Removing re from requirements
+[31m|[m 
+* [33mcommit 84d2d72681bb42692501a245e720d32f19a40383[m
+[31m|[m Author: Nick Kirby <nickkirby317@gmail.com>
+[31m|[m Date:   Wed Nov 25 03:32:25 2020 -0500
+[31m|[m 
+[31m|[m     Updating requirements.txt
+[31m|[m 
+* [33mcommit 5d607e23e33496da89ce70bc53faa22d5dfbb3e9[m
+[31m|[m Author: Nick Kirby <nickkirby317@gmail.com>
+[31m|[m Date:   Wed Nov 25 03:25:16 2020 -0500
+[31m|[m 
+[31m|[m     Adding build_model function
+[31m|[m 
+* [33mcommit 59de9e4bed3ebdfec3554a9751e787e2a0cc306c[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+[31m|[m Author: Nick Kirby <nickkirby317@gmail.com>
+[31m|[m Date:   Wed Nov 25 02:47:59 2020 -0500
+[31m|[m 
+[31m|[m     Reworking
+[31m|[m   
+*   [33mcommit 86e195fe4ad37e96d6a06ac69d17b9877266cc50[m
+[32m|[m[33m\[m  Merge: be459b1 118630f
+[32m|[m [33m|[m Author: nkirbit <68832708+nkirbit@users.noreply.github.com>
+[32m|[m [33m|[m Date:   Tue Nov 24 19:31:17 2020 -0500
+[32m|[m [33m|[m 
+[32m|[m [33m|[m     Merge pull request #3 from nkirbit/dev
+[32m|[m [33m|[m     
+[32m|[m [33m|[m     New line of text!
+[32m|[m [33m|[m 
+[32m|[m * [33mcommit 118630f347decf378fa963bd48d89412e0b2f1d6[m[33m ([m[1;31morigin/dev[m[33m)[m
+[32m|[m [33m|[m Author: Nick Kirby <nickkirby317@gmail.com>
+[32m|[m [33m|[m Date:   Tue Nov 24 19:29:18 2020 -0500
+[32m|[m [33m|[m 
+[32m|[m [33m|[m     New line of text!
+[32m|[m [33m|[m 
+* [33m|[m [33mcommit be459b18f3772fd6358090fa16f10b74b0f94c8e[m
+[34m|[m[33m\[m[33m|[m Merge: 5e7d1a9 18b7d2e
+[34m|[m [33m|[m Author: nkirbit <68832708+nkirbit@users.noreply.github.com>
+[34m|[m [33m|[m Date:   Mon Oct 26 16:58:42 2020 -0400
+[34m|[m [33m|[m 
+[34m|[m [33m|[m     Merge pull request #2 from nkirbit/dev
+[34m|[m [33m|[m     
+[34m|[m [33m|[m     Dev
+[34m|[m [33m|[m 
+[34m|[m * [33mcommit 18b7d2e40aabb4f10e0e6d7d411346ca1169d595[m
+[34m|[m [35m|[m Author: Nick Kirby <nickkirby317@gmail.com>
+[34m|[m [35m|[m Date:   Mon Oct 26 15:36:56 2020 -0400
+[34m|[m [35m|[m 
+[34m|[m [35m|[m     Uppercase Procfile
+[34m|[m [35m|[m 
+[34m|[m * [33mcommit e2a4614b26ce98573e41ea2d6a6eeda0fba22d1f[m
+[34m|[m [35m|[m Author: Nick Kirby <nickkirby317@gmail.com>
+[34m|[m [35m|[m Date:   Mon Oct 26 15:36:26 2020 -0400
+[34m|[m [35m|[m 
+[34m|[m [35m|[m     removing lowercase procfile
+[34m|[m [35m|[m 
+[34m|[m * [33mcommit 72dc3fee02c64ccec534cdd5913ad481c85bd75c[m
+[34m|[m [35m|[m Author: Nick Kirby <nickkirby317@gmail.com>
+[34m|[m [35m|[m Date:   Mon Oct 26 15:23:10 2020 -0400
+[34m|[m [35m|[m 
+[34m|[m [35m|[m     add procfile and requirements.txt
+[34m|[m [35m|[m 
+[34m|[m * [33mcommit dc80cdf23877daa07fb7afef57aa42be6e4299b4[m
+[34m|[m [35m|[m Author: Nick Kirby <nickkirby317@gmail.com>
+[34m|[m [35m|[m Date:   Mon Oct 26 15:18:56 2020 -0400
+[34m|[m [35m|[m 
+[34m|[m [35m|[m     trying without np
+[34m|[m [35m|[m 
+[34m|[m * [33mcommit 130f703326ba215c2b56e7fb8eacc37be5f262ad[m
+[34m|[m[34m/[m  Author: Nick Kirby <nickkirby317@gmail.com>
+[34m|[m   Date:   Mon Oct 26 15:13:54 2020 -0400
+[34m|[m   
+[34m|[m       Trying without Json
+[34m|[m 
+* [33mcommit 5e7d1a92152e1c34dd2efcb0a234e6285c34b4f4[m
+[35m|[m Author: Nick Kirby <nickkirby317@gmail.com>
+[35m|[m Date:   Mon Oct 26 14:26:20 2020 -0400
+[35m|[m 
+[35m|[m     Adding ability to plot simple graph
+[35m|[m 
+* [33mcommit 5ffb3f76a9ef718d9304ad408d8e8a491789aef4[m
+[35m|[m Author: Nick Kirby <nickkirby317@gmail.com>
+[35m|[m Date:   Mon Oct 26 13:59:18 2020 -0400
+[35m|[m 
+[35m|[m     Demoing app.py
+[35m|[m   
+*   [33mcommit b658dd97742b10d90d67c2f5f90c14e299ec10e5[m
+[36m|[m[1;31m\[m  Merge: 78a8793 1fb307c
+[36m|[m [1;31m|[m Author: nkirbit <68832708+nkirbit@users.noreply.github.com>
+[36m|[m [1;31m|[m Date:   Mon Oct 26 13:33:40 2020 -0400
+[36m|[m [1;31m|[m 
+[36m|[m [1;31m|[m     Merge pull request #1 from nkirbit/dev
+[36m|[m [1;31m|[m     
+[36m|[m [1;31m|[m     Adding app.py file.
+[36m|[m [1;31m|[m 
+[36m|[m * [33mcommit 1fb307c037c812bcf4a7b6d5109004833de81a87[m
+[36m|[m[36m/[m  Author: Nick Kirby <nickkirby317@gmail.com>
+[36m|[m   Date:   Mon Oct 26 13:31:53 2020 -0400
+[36m|[m   
+[36m|[m       Adding app.py file.
+[36m|[m 
+* [33mcommit 78a8793d485067f08a18e3fc2db843fae8dae58b[m
+  Author: nkirbit <68832708+nkirbit@users.noreply.github.com>
+  Date:   Mon Oct 26 13:20:19 2020 -0400
+  
+      Initial commit
