@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 import pandas as pd
 import statsmodels.api as sm
 import statsmodels.stats as sm_stat
@@ -12,7 +11,7 @@ def generate_model(phrase):
     cases = pd.read_csv('WeightedCases.csv')
     interest = pd.read_csv(phrase +'_cleaned.csv')
     df,num_states,eligible_states = get_dataframe(cases, interest)
-    model = x_lags_week(df,4,num_states,eligible_states)    
+    model = x_lags_week(df,4,num_states,eligible_states)
     return model
 
 def get_dataframe(cases,interest):
