@@ -23,7 +23,7 @@ def make_chart():
     model = build_model.generate_model(app.vars['business'])
     coefs = model.params[1:5]
     average = sum(coefs)/4
-    table_values, f_p_value, output_string = model_analysis.do_some_analysis(model,state,business)
+    table_values, f_p_value, output_string = model_analysis.do_some_analysis(model,app.vars['state'],app.vars['business'])
     altair_json, latest_date = get_latest_covid.make_covid_plot(app.vars['state'])
     return render_template('make_chart.html',state_html =app.vars['state'], \
     business_html = app.vars['business'], average=average, \
