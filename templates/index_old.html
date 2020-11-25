@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Altair and Flask</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.0.2"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
+  </head>
+  <body>
+    <div><h1>Programmatically Generated Chart</h1>
+          <div id='vis'>
+          </div>
+        </div>
+
+<script>
+    var embedOpt = {"mode": "vega-lite"};
+    var example_spec = {{chart_json | safe}}
+    vegaEmbed("#vis", example_spec);
+ </script>
+
+ <p> This is a new line of text!! </p>
+
+
+  </body>
+</html>
