@@ -2,3 +2,7 @@ flask
 gunicorn
 altair
 pandas
+numpy
+statsmodels
+scipy
+datetime

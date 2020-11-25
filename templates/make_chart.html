@@ -1,18 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<title> CHARTS CHARTS CHARTS!!</title>
-<div class=page>
-  <p>
-    You have asked me to make a chart for you.
-    </p>
-    <p>
-      Your state is {{state_html}}
-      </p>
-      <p>
-        Your businesses is {{business_html}}
-        </p>
+<head>
+  <link rel=stylesheet type=text/css href='{{ url_for('static',filename='style_lulu.css')}}'>
+  <meta charset="utf-8">
+  <title>Test</title>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.0.2"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
+</head>
+<body>
 
-        Eventually there will be a graph here!
+<div>
+<p> Your chosen state is {{state_html}} </p>
+<p> Your chosen business is {{business_html}} </p>
+<p> The average is {{average}} </p>
 
-        </div>
+</div>
+         <div><h1>Does this graph work?</h1>
+               <div id='vis'>
+               </div>
+             </div>
+
+<script>
+   var embedOpt = {"mode": "vega-lite"};
+   var example_spec = {{chart_json | safe}}
+   vegaEmbed("#vis", example_spec);
+</script>
+
+      </body>
         </html>
