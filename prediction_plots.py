@@ -18,7 +18,7 @@ def predictions(phrase,state,state_df,coefs,state_pop):
     return case_path_1, case_path_2, case_path_3, case_path_4, case_path_5, \
      interest_path_1, interest_path_2, interest_path_3, interest_path_4, \
      interest_path_5
-#    altair_json = make_altair(val1, val2, interest1, interst2)
+#    altair_json = make_altair(val1, val2, interest1, interst2, other stuf)
 
 def prediction_setup(phrase,state_df,state,state_pop):
     startday = datetime.date(2020, 11, 15)
