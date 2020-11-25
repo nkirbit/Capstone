@@ -21,11 +21,11 @@ def index():
 def make_chart():
     model = build_model.generate_model(app.vars['business'])
     coefs = model.params[1:5]
-    app.vars['average'] = sum(coefs)/4
-    altair_json = get_latest_covid.make_covid_plot(app.vars['state'])
+    average = sum(coefs)/4
+    altair_json, latest_date = get_latest_covid.make_covid_plot(app.vars['state'])
     return render_template('make_chart.html',state_html =app.vars['state'], \
-    business_html = app.vars['business'], average=app.vars['average'], \
-    chart_json = altair_json)
+    business_html = app.vars['business'], average=average, \
+    chart_json = altair_json, date_string = latest_date)
 
 if __name__=='__main__':
     app.run()

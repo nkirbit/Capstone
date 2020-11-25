@@ -14,9 +14,13 @@
 <p> Your chosen state is {{state_html}} </p>
 <p> Your chosen business is {{business_html}} </p>
 <p> The average is {{average}} </p>
+<p> The most recent COVID data is from {{date_string}}. </p>
 
 </div>
-         <div><h1>Does this graph work?</h1>
+         <div><p>Below is a plot of the COVID-19 case occurrence in {{state_html}}. <p>
+              <p>The top plot measures the 7-day average of new cases, while the
+                bottom measures cumulative cases. A window can be selected in the bottom
+                plot to examine the top plot more closely </p>
                <div id='vis'>
                </div>
              </div>

@@ -9,7 +9,7 @@ import re
 
 def generate_model(phrase):
     cases = pd.read_csv('WeightedCases.csv')
-    interest = pd.read_csv(phrase +'_cleaned.csv')
+    interest = pd.read_csv(f'cleaned_data/{phrase}.csv')
     df,num_states,eligible_states = get_dataframe(cases, interest)
     model = x_lags_week(df,4,num_states,eligible_states)
     return model
