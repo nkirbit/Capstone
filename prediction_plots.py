@@ -17,7 +17,7 @@ def predictions(phrase,state,state_df,coefs,state_pop):
     i5 = make_interest_path(c5,recent_interest,coefs)
     json = make_altair(c1,c2,c3,c4,c5,i1,i2,i3,i4,i5)
     most_recent_cases = np.round(recent_cases[-1],2)
-    return json, most_recent_cases
+    return json, most_recent_cases, recent_interest, recent_cases
 #    altair_json = make_altair(val1, val2, interest1, interst2, other stuf)
 
 def prediction_setup(phrase,state_df,state,state_pop):
@@ -99,4 +99,16 @@ def make_altair(c1,c2,c3,c4,c5,i1,i2,i3,i4,i5):
 
 
     json = (label_selector & (covid_chart | interest_chart)).to_json()
+    return json
+
+def make_user_altair(cases,interest):
+    dates = [pd.to_datetime(datetime.datetime(2020,11,15) + datetime.timedelta(days=x)) for x in range(23)]
+    data = np.array([dates,cases,interest]).transpose()
+    df = pd.DataFrame(data, columns = ['Date','covid','interest'])
+    melted = pd.melt(df,id_vars = 'Date')
+    chart = alt.Chart(melted).mark_line().encode(
+        x='Date:T',
+        y=alt.Y('value:Q',title='Interest in search term'),
+        color='variable')
+    json = chart.to_json()
     return json

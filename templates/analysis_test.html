@@ -174,7 +174,8 @@
           <li> A random walk with no drift</li>
           <li> A random walk with drift equal to the average change over the past 60 days.</li>
         </ul>
-        <br><br> Additionally, you can generate your own paths by clicking the button below.
+        <br> Additionally, you can generate your own paths by filling out the form
+        below the graph.
       </p>
         </div>
         <div id='vis2'>
@@ -187,8 +188,53 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <h2>Pick your own data!</h2>
-          <p>{{recent}}</p>
+          <p class="lead">Pick your own data!  For reference, the most recent data in {{state}}
+          was {{recent}} cases per 100k population.</p>
+          <form id = "predictions" method = "post" action="/analysis">
+            <label for="nov25">November 25th:</label>
+            <input type="number" id="nov25" name="nov25"
+                   min="0" max="500" value={{default}}>
+          <label for="nov26">November 26th:</label>
+           <input type="number" id="nov26" name="nov26"
+                  min="0" max="500" value={{default}}>
+          <label for="nov27">November 27th:</label>
+          <input type="number" id="nov27" name="nov27"
+          min="0" max="500" value={{default}}>
+          <label for="nov28">November 28th:</label>
+          <input type="number" id="nov28" name="nov28"
+          min="0" max="500" value={{default}}>
+          <label for="nov29">November 29th:</label>
+          <input type="number" id="nov29" name="nov29"
+          min="0" max="500" value={{default}}>
+          <label for="nov30">November 30th:</label>
+          <input type="number" id="nov30" name="nov30"
+                min="0" max="500" value={{default}}>
+          <label for="dec1">December 1st:</label>
+          <input type="number" id="dec1" name="dec1"
+          min="0" max="500" value={{default}}>
+          <label for="dec2">December 2nd:</label>
+          <input type="number" id="dec2" name="dec2"
+          min="0" max="500" value={{default}}>
+          <label for="dec3">December 3rd:</label>
+          <input type="number" id="dec3" name="dec3"
+          min="0" max="500" value={{default}}>
+          <label for="dec4">December 4th:</label>
+          <input type="number" id="dec4" name="dec4"
+          min="0" max="500" value={{default}}>
+          <label for="dec5">December 5th:</label>
+          <input type="number" id="dec5" name="dec5"
+          min="0" max="500" value={{default}}>
+          <label for="dec6">December 6th:</label>
+          <input type="number" id="dec6" name="dec6"
+          min="0" max="500" value={{default}}>
+          <label for="dec7">December 7th:</label>
+          <input type="number" id="dec7" name="dec7"
+          min="0" max="500" value={{default}}>
+          <label for="dec8">December 8th:</label>
+          <input type="number" id="dec8" name="dec8"
+          min="0" max="500" value={{default}}>
+        <input type="submit" class="button">
+          </form>
         </div>
       </div>
     </div>
