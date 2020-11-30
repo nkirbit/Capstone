@@ -6,7 +6,7 @@ import altair as alt
 
 def make_covid_plot(state):
     state_df, state_pop, most_recent_date = get_data(state)
-    altair_json = make_daily_cumul_graph(state_df,state)
+    altair_json = make_daily_cumul_graph(state_df,state,state_pop)
     return altair_json, most_recent_date, state_df, state_pop
 
 def get_data(state):
@@ -26,7 +26,7 @@ def get_data(state):
     ###
     return state_df, pop, date_string
 
-def make_daily_cumul_graph(state_df,state):
+def make_daily_cumul_graph(state_df,state,state_pop):
     ### Make series for cumulative cases for Altair.
     cumulative = state_df.transpose()
     cumulative['Date'] = cumulative.index
@@ -41,22 +41,27 @@ def make_daily_cumul_graph(state_df,state):
     daily = daily.rename(columns={state:'cases'})
     daily = daily[daily['Date'] >= datetime.datetime(2020,4,1)]
 
+    daily_100k = daily.copy()
+    cases_100k = daily['cases'].values / state_pop * 100000
+    daily_100k['cases'] = cases_100k
+
     brush = alt.selection(type='interval', encodings=['x'], clear=False)
 
-    base = alt.Chart(daily, width=400, height=400).mark_line().encode(
+    daily_graph = alt.Chart(daily, width=600, height=240).mark_line().encode(
     alt.X('Date:T', scale=alt.Scale(domain=brush)),
-    alt.Y('cases:Q', title=" ")
-)
-    daily_graph = base.properties(height=240,
-    width = 600)
+    alt.Y('cases:Q', title="Daily cases"))
+
+    daily_100k_graph = alt.Chart(daily_100k, width=600, height=240).mark_line().encode(
+    alt.X('Date:T', scale=alt.Scale(domain=brush)),
+    alt.Y('cases:Q', title="Daily cases per 100k population"))
 
     cumulative_graph = alt.Chart(cumulative).mark_line().encode(
     alt.X('Date:T'),
-    alt.Y('cases:Q', title=" ")).properties(
+    alt.Y('cases:Q', title="Cumulative total of cases")).properties(
     height=200,
     width = 600).add_selection(brush)
 
-    altair_plot = (daily_graph & cumulative_graph).to_json()
+    altair_plot = (daily_100k_graph & daily_graph & cumulative_graph).to_json()
 
     ##returns a json version of the plot to put on website
     return altair_plot
