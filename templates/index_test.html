@@ -47,10 +47,7 @@
             <a class="nav-link js-scroll-trigger" href="#about">About the Project</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#services">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+            <a class="nav-link js-scroll-trigger" href="#links">Links</a>
           </li>
         </ul>
       </div>
@@ -59,7 +56,10 @@
 
   <header class="bg-primary text-white">
     <div class="container text-center">
-      <h1>To begin, please select a state and a type of business:</h1>
+      <h1> COVID-19 and consumer interest </h1>
+      <p>
+      <h3>To begin, please select a state and a type of business:</h3>
+      </p>
       <p>
       <form id="state_select" method = "post" action="/">
         <label for="state">State:</label>
@@ -145,123 +145,50 @@
       <div class="row">
         <div class="col-lg-8 mx-auto">
           <h2>About the Project</h2>
-          <p class="lead">This is my capstone project for The Data Incubator's Fall 2020 cohort.</p>
-          <p> My project aims to understand how changes in COVID-19 rates affect
-             consumer's level of interest in different industries. If COVID-19 cases
-             increase in a particular state, which businesses are customers more
-             or less likely to frequent?
-          <br> To measure consumer interest, I used Google Trends data. I downloaded
+          <p>
+          <h4>Why should I care?</h4>
+          </p>
+             My project aims to understand how changes in COVID-19 rates affect
+             consumer's level of interest in different industries. This is worth
+             measuring because it can inform how different businesses should respond
+             to changing rates of COVID-19 in their location.
+             <br><br> For example, I find
+             that when COVID cases per 100k people increase by 100, interest in
+             bars drops by 5.5%, interest in restaurants drops by 11%, and interest
+             in grocery stores remains unchanged.
+          <p>
+          <h4>Methods</h4>
+          </p>
+          To measure consumer interest, I used Google Trends data. I downloaded
            daily data over the period from March, 2020 to the present, and peformed
            regression analysis to measure which search terms were influenced by changes in COVID-19.
            I used a distributed lag model with 4 lags for COVID-19 rates, and included
            categorical variables for the month, day of week, and state.
-           <br> I have included the results for a small sample of businesses.
+           <br><br> I have included results for a small sample of businesses.
             Users can choose a state and type of business, and make predictions
             describing how different paths of COVID-19 rates would influence
             future consumer interest.
-            <br> Unfortunately,
+          <br><br> I collected google trends data using the <a href="https://pypi.org/project/pytrends/">Pytrends</a>
+          package for Python. All analysis was done in Python.
+          <br><br> Unfortunately,
             I am unable to let users enter their own search terms, as the process of
             gathering data from Google Trend's API includes several hundred requests, and
             would time out this page.
-          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="services" class="bg-light">
+  <section id="links" class="bg-light">
     <div class="container">
-      <div class="row">
+      <div class="text-center">
         <div class="col-lg-8 mx-auto">
-          <h2>Services we offer</h2>
-          <form id="state_select" method = "post" action="/">
-            <label for="state">State:</label>
-            <select id="state" name="state">
-              <option>Alabama</option>
-      	      <option>Alaska</option>
-            	<option>Arizona</option>
-            	<option>Arkansas</option>
-            	<option>California</option>
-            	<option>Colorado</option>
-            	<option>Connecticut</option>
-            	<option>Delaware</option>
-            	<option>District Of Columbia</option>
-            	<option>Florida</option>
-            	<option>Georgia</option>
-            	<option>Hawaii</option>
-            	<option>Idaho</option>
-            	<option>Illinois</option>
-            	<option>Indiana</option>
-            	<option>Iowa</option>
-            	<option>Kansas</option>
-            	<option>Kentucky</option>
-            	<option>Louisiana</option>
-            	<option>Maine</option>
-            	<option>Maryland</option>
-            	<option>Massachusetts</option>
-            	<option>Michigan</option>
-            	<option>Minnesota</option>
-            	<option>Mississippi</option>
-            	<option>Missouri</option>
-            	<option>Montana</option>
-            	<option>Nebraska</option>
-            	<option>Nevada</option>
-            	<option>New Hampshire</option>
-            	<option>New Jersey</option>
-            	<option>New Mexico</option>
-            	<option>New York</option>
-            	<option>North Carolina</option>
-            	<option>North Dakota</option>
-            	<option>Ohio</option>
-            	<option>Oklahoma</option>
-            	<option>Oregon</option>
-            	<option>Pennsylvania</option>
-            	<option>Rhode Island</option>
-            	<option>South Carolina</option>
-            	<option>South Dakota</option>
-            	<option>Tennessee</option>
-            	<option>Texas</option>
-            	<option>Utah</option>
-            	<option>Vermont</option>
-            	<option>Virginia</option>
-            	<option>Washington</option>
-            	<option>West Virginia</option>
-            	<option>Wisconsin</option>
-            	<option>Wyoming</option>
-            </select>
-            <p>
-            <label for="business">Business:</label>
-            <select id="business" name="business">
-              tags = ['bakery','bar','board games','brewery','cafe','concert',
-              'food delivery','grocery','hotel','liquor store', 'nightclub', 'restaurant delivery', 'restaurants']
-              <option>Bakery</option>
-      	      <option>Bar</option>
-            	<option>Brewery</option>
-            	<option>Cafe</option>
-            	<option>Concert</option>
-            	<option value="Food_Delivery">Food Delivery</option>
-            	<option value="Grocery_Store">Grocery Store</option>
-            	<option>Hotel</option>
-              <option value="Liquor_Store">Liquor Store</option>
-              <option value="Movie_Theater">Movie Theater</option>
-            	<option>Nightclub</option>
-              <option>Restaurant</option>
-              <option>Covid</option>
-            </select>
-          </p>
-            <input type="submit">
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h2>Contact us</h2>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
+          <h2>Data sources and other links</h2>
+          <p class="text-center"><a href=https://github.com/COVID19Tracking/associated-data/tree/master/us_census_data>US Population Data</a></p>
+          <p class="text-center"><a href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series">COVID-19 Data</a></p>
+          <p class="text-center"><a href="https://trends.google.com/trends/?geo=US">Google Trends</a></p>
+          <p class="text-center"><a href="https://pypi.org/project/pytrends/">Pytrends</a></p>
+          <p class="text-center"><a href="https://github.com/nkirbit/Capstone">Github repository for this project</a></p>
         </div>
       </div>
     </div>
@@ -270,7 +197,7 @@
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+      <p class="m-0 text-center text-white">Nick Kirby, November 2020</p>
     </div>
     <!-- /.container -->
   </footer>
