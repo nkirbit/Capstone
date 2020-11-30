@@ -7,19 +7,22 @@ import altair as alt
 def make_covid_plot(state):
     state_df, state_pop, most_recent_date = get_data(state)
     altair_json = make_daily_cumul_graph(state_df,state)
-    return altair_json, most_recent_date
+    return altair_json, most_recent_date, state_df, state_pop
 
 def get_data(state):
     ### GET MOST RECENT COVID DATA
     df = pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv')
     df.drop(columns = ['UID','iso2','iso3','code3','FIPS','Admin2','Lat','Long_','Combined_Key'],inplace=True)
+    ######## FOR THE TIME BEING I AM STOPPING DATA AT 11/24/2020 so that it matches most recently pulled
+    ######## trends data.
+    df = df.iloc[:,:310]
     state_df = df[df['Province_State']==state].groupby('Province_State').sum()
     most_recent_date = pd.to_datetime(state_df.columns[-1])
     date_string = most_recent_date.strftime("%A, %B %#d, %Y")
 
     ###GET STATE POPULATION
     pops = pd.read_csv('https://raw.githubusercontent.com/COVID19Tracking/associated-data/master/us_census_data/us_census_2018_population_estimates_states.csv')
-    pop = pops[pops['state_name'] == 'Alabama']['population'][0]
+    pop = pops[pops['state_name'] == state]['population'].values[0]
     ###
     return state_df, pop, date_string
 

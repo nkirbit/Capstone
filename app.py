@@ -5,6 +5,7 @@ import datetime
 import build_model
 import get_latest_covid
 import model_analysis
+import prediction_plots
 
 app = Flask(__name__)
 app.vars={}
@@ -22,11 +23,11 @@ def index():
 def make_chart():
     model = build_model.generate_model(app.vars['business'])
     coefs = model.params[1:5]
-    average = sum(coefs)/4
     table_values, f_p_value, output_string = model_analysis.do_some_analysis(model,app.vars['state'],app.vars['business'])
-    altair_json, latest_date = get_latest_covid.make_covid_plot(app.vars['state'])
+    altair_json, latest_date, state_df, state_pop = get_latest_covid.make_covid_plot(app.vars['state'])
+    c1,c2,c3,c4,c5,i1,i2,i3,i4,i5 = prediction_plots.predictions(app.vars['business'],app.vars['state'],state_df,coefs,state_pop)
     return render_template('make_chart.html',state_html =app.vars['state'], \
-    business_html = app.vars['business'], average=average, \
+    business_html = app.vars['business'], \
     chart_json = altair_json, date_string = latest_date, \
     t1 = round(table_values[0][0],3), t2 = round(table_values[1][0],3),\
     t3 = round(table_values[2][0],3), t4 = round(table_values[3][0],3), \
