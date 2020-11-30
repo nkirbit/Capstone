@@ -13,7 +13,7 @@ app.vars={}
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'GET':
-        return render_template('index.html')
+        return render_template('index_test.html')
     else:
         app.vars['state'] = request.form['state']
         app.vars['business'] = request.form['business']

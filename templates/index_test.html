@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Nick Kirby's Capstone for TDI Fall 2020">
+  <meta name="author" content="Nick Kirby">
+
+  <title>COVID-19's Impact on Consumer Interest</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="static/css/scrolling-nav.css" rel="stylesheet">
+  <style>
+  .button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+  </style>
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">About the Project</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="bg-primary text-white">
+    <div class="container text-center">
+      <h1>To begin, please select a state and a type of business:</h1>
+      <p>
+      <form id="state_select" method = "post" action="/">
+        <label for="state">State:</label>
+        <select id="state" name="state">
+          <option>Alabama</option>
+          <option>Alaska</option>
+          <option>Arizona</option>
+          <option>Arkansas</option>
+          <option>California</option>
+          <option>Colorado</option>
+          <option>Connecticut</option>
+          <option>Delaware</option>
+          <option>District Of Columbia</option>
+          <option>Florida</option>
+          <option>Georgia</option>
+          <option>Hawaii</option>
+          <option>Idaho</option>
+          <option>Illinois</option>
+          <option>Indiana</option>
+          <option>Iowa</option>
+          <option>Kansas</option>
+          <option>Kentucky</option>
+          <option>Louisiana</option>
+          <option>Maine</option>
+          <option>Maryland</option>
+          <option>Massachusetts</option>
+          <option>Michigan</option>
+          <option>Minnesota</option>
+          <option>Mississippi</option>
+          <option>Missouri</option>
+          <option>Montana</option>
+          <option>Nebraska</option>
+          <option>Nevada</option>
+          <option>New Hampshire</option>
+          <option>New Jersey</option>
+          <option>New Mexico</option>
+          <option>New York</option>
+          <option>North Carolina</option>
+          <option>North Dakota</option>
+          <option>Ohio</option>
+          <option>Oklahoma</option>
+          <option>Oregon</option>
+          <option>Pennsylvania</option>
+          <option>Rhode Island</option>
+          <option>South Carolina</option>
+          <option>South Dakota</option>
+          <option>Tennessee</option>
+          <option>Texas</option>
+          <option>Utah</option>
+          <option>Vermont</option>
+          <option>Virginia</option>
+          <option>Washington</option>
+          <option>West Virginia</option>
+          <option>Wisconsin</option>
+          <option>Wyoming</option>
+        </select>
+        <label for="business">Business:</label>
+        <select id="business" name="business">
+          tags = ['bakery','bar','board games','brewery','cafe','concert',
+          'food delivery','grocery','hotel','liquor store', 'nightclub', 'restaurant delivery', 'restaurants']
+          <option>Bakery</option>
+          <option>Bar</option>
+          <option>Brewery</option>
+          <option>Cafe</option>
+          <option>Concert</option>
+          <option value="Food_Delivery">Food Delivery</option>
+          <option value="Grocery_Store">Grocery Store</option>
+          <option>Hotel</option>
+          <option value="Liquor_Store">Liquor Store</option>
+          <option value="Movie_Theater">Movie Theater</option>
+          <option>Nightclub</option>
+          <option>Restaurant</option>
+          <option>Covid</option>
+        </select>
+        <input type="submit" class="button">
+      </form>
+      </p>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>About the Project</h2>
+          <p class="lead">This is my capstone project for The Data Incubator's Fall 2020 cohort.</p>
+          <p> My project aims to understand how changes in COVID-19 rates affect
+             consumer's level of interest in different industries. If COVID-19 cases
+             increase in a particular state, which businesses are customers more
+             or less likely to frequent?
+          <br> To measure consumer interest, I used Google Trends data. I downloaded
+           daily data over the period from March, 2020 to the present, and peformed
+           regression analysis to measure which search terms were influenced by changes in COVID-19.
+           I used a distributed lag model with 4 lags for COVID-19 rates, and included
+           categorical variables for the month, day of week, and state.
+           <br> I have included the results for a small sample of businesses.
+            Users can choose a state and type of business, and make predictions
+            describing how different paths of COVID-19 rates would influence
+            future consumer interest.
+            <br> Unfortunately,
+            I am unable to let users enter their own search terms, as the process of
+            gathering data from Google Trend's API includes several hundred requests, and
+            would time out this page.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>Services we offer</h2>
+          <form id="state_select" method = "post" action="/">
+            <label for="state">State:</label>
+            <select id="state" name="state">
+              <option>Alabama</option>
+      	      <option>Alaska</option>
+            	<option>Arizona</option>
+            	<option>Arkansas</option>
+            	<option>California</option>
+            	<option>Colorado</option>
+            	<option>Connecticut</option>
+            	<option>Delaware</option>
+            	<option>District Of Columbia</option>
+            	<option>Florida</option>
+            	<option>Georgia</option>
+            	<option>Hawaii</option>
+            	<option>Idaho</option>
+            	<option>Illinois</option>
+            	<option>Indiana</option>
+            	<option>Iowa</option>
+            	<option>Kansas</option>
+            	<option>Kentucky</option>
+            	<option>Louisiana</option>
+            	<option>Maine</option>
+            	<option>Maryland</option>
+            	<option>Massachusetts</option>
+            	<option>Michigan</option>
+            	<option>Minnesota</option>
+            	<option>Mississippi</option>
+            	<option>Missouri</option>
+            	<option>Montana</option>
+            	<option>Nebraska</option>
+            	<option>Nevada</option>
+            	<option>New Hampshire</option>
+            	<option>New Jersey</option>
+            	<option>New Mexico</option>
+            	<option>New York</option>
+            	<option>North Carolina</option>
+            	<option>North Dakota</option>
+            	<option>Ohio</option>
+            	<option>Oklahoma</option>
+            	<option>Oregon</option>
+            	<option>Pennsylvania</option>
+            	<option>Rhode Island</option>
+            	<option>South Carolina</option>
+            	<option>South Dakota</option>
+            	<option>Tennessee</option>
+            	<option>Texas</option>
+            	<option>Utah</option>
+            	<option>Vermont</option>
+            	<option>Virginia</option>
+            	<option>Washington</option>
+            	<option>West Virginia</option>
+            	<option>Wisconsin</option>
+            	<option>Wyoming</option>
+            </select>
+            <p>
+            <label for="business">Business:</label>
+            <select id="business" name="business">
+              tags = ['bakery','bar','board games','brewery','cafe','concert',
+              'food delivery','grocery','hotel','liquor store', 'nightclub', 'restaurant delivery', 'restaurants']
+              <option>Bakery</option>
+      	      <option>Bar</option>
+            	<option>Brewery</option>
+            	<option>Cafe</option>
+            	<option>Concert</option>
+            	<option value="Food_Delivery">Food Delivery</option>
+            	<option value="Grocery_Store">Grocery Store</option>
+            	<option>Hotel</option>
+              <option value="Liquor_Store">Liquor Store</option>
+              <option value="Movie_Theater">Movie Theater</option>
+            	<option>Nightclub</option>
+              <option>Restaurant</option>
+              <option>Covid</option>
+            </select>
+          </p>
+            <input type="submit">
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>Contact us</h2>
+          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="static/vendor/jquery/jquery.min.js"></script>
+  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom JavaScript for this theme -->
+  <script src="static/js/scrolling-nav.js"></script>
+
+</body>
+
+</html>
