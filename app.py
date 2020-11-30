@@ -22,25 +22,29 @@ def index():
 
 @app.route('/analysis', methods=['GET', 'POST'])
 def analysis():
-    model = build_model.generate_model(app.vars['business'])
-    coefs = model.params[1:5]
-    business_no_underscore = app.vars['business'].replace('_',' ')
-    table_values, f_p_value, output_string = model_analysis.do_some_analysis(model,app.vars['state'],app.vars['business'])
-    altair_json, latest_date, state_df, state_pop = get_latest_covid.make_covid_plot(app.vars['state'])
-    c1,c2,c3,c4,c5,i1,i2,i3,i4,i5 = prediction_plots.predictions(app.vars['business'],app.vars['state'],state_df,coefs,state_pop)
-    long_string, short_string = generate_result_string.generate_result_string(model,app.vars['state'],business_no_underscore,state_pop,state_df)
-    return render_template('analysis_test.html',state =app.vars['state'], \
-    business = app.vars['business'],  p_value = f_p_value, \
-    chart_json = altair_json, date_string = latest_date, \
-    business_no_underscore = business_no_underscore, \
-    short_string = short_string, long_string = long_string, \
-    t1 = round(table_values[0][0],3), t2 = round(table_values[1][0],3),\
-    t3 = round(table_values[2][0],3), t4 = round(table_values[3][0],3), \
-    t5 = round(table_values[0][1],3), t6 = round(table_values[1][1],3), \
-    t7 = round(table_values[2][1],3), t8 = round(table_values[3][1],3), \
-    t9 = round(table_values[0][2],3), t10 = round(table_values[1][2],3), \
-    t11 = round(table_values[2][2],3), t12 = round(table_values[3][2],3), \
-    t13 = round(table_values[0][3],3), t14 = round(table_values[1][3],3), \
-    t15 = round(table_values[2][3],3), t16 = round(table_values[3][3],3))
+    if request.method == 'GET':
+        model = build_model.generate_model(app.vars['business'])
+        coefs = model.params[1:5]
+        business_no_underscore = app.vars['business'].replace('_',' ')
+        table_values, f_p_value, output_string = model_analysis.do_some_analysis(model,app.vars['state'],app.vars['business'])
+        altair_json, latest_date, state_df, state_pop = get_latest_covid.make_covid_plot(app.vars['state'])
+        chart_json_2, most_recent_cases = prediction_plots.predictions(app.vars['business'],app.vars['state'],state_df,coefs,state_pop)
+        long_string, short_string = generate_result_string.generate_result_string(model,app.vars['state'],business_no_underscore,state_pop,state_df)
+        return render_template('analysis_test.html',state =app.vars['state'], \
+        business = app.vars['business'],  p_value = f_p_value, \
+        chart_json = altair_json, date_string = latest_date, \
+        chart_json_2 = chart_json_2, recent=most_recent_cases,\
+        business_no_underscore = business_no_underscore, \
+        short_string = short_string, long_string = long_string, \
+        t1 = round(table_values[0][0],3), t2 = round(table_values[1][0],3),\
+        t3 = round(table_values[2][0],3), t4 = round(table_values[3][0],3), \
+        t5 = round(table_values[0][1],3), t6 = round(table_values[1][1],3), \
+        t7 = round(table_values[2][1],3), t8 = round(table_values[3][1],3), \
+        t9 = round(table_values[0][2],3), t10 = round(table_values[1][2],3), \
+        t11 = round(table_values[2][2],3), t12 = round(table_values[3][2],3), \
+        t13 = round(table_values[0][3],3), t14 = round(table_values[1][3],3), \
+        t15 = round(table_values[2][3],3), t16 = round(table_values[3][3],3))
+    else:
+        return ('Does this work?')
 if __name__=='__main__':
     app.run()

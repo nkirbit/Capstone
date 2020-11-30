@@ -5,19 +5,19 @@ import numpy as np
 
 def predictions(phrase,state,state_df,coefs,state_pop):
     recent_interest, recent_cases, recent_stdev, big_trend = prediction_setup(phrase,state_df,state,state_pop)
-    case_path_1 = choose_case_path(recent_cases, delta = 0)
-    case_path_2 = choose_case_path(recent_cases, delta = (recent_cases[-1]-recent_cases[-2]))
-    case_path_3 = choose_case_path(recent_cases, delta = (recent_cases[-1] - recent_cases[0])/8)
-    case_path_4 = choose_case_path(recent_cases, delta = 0, random_walk = True, stdev = recent_stdev)
-    case_path_5 = choose_case_path(recent_cases, delta = 0, random_walk = True, stdev = recent_stdev, drift = big_trend)
-    interest_path_1 = make_interest_path(case_path_1,recent_interest,coefs)
-    interest_path_2 = make_interest_path(case_path_2,recent_interest,coefs)
-    interest_path_3 = make_interest_path(case_path_3,recent_interest,coefs)
-    interest_path_4 = make_interest_path(case_path_4,recent_interest,coefs)
-    interest_path_5 = make_interest_path(case_path_5,recent_interest,coefs)
-    return case_path_1, case_path_2, case_path_3, case_path_4, case_path_5, \
-     interest_path_1, interest_path_2, interest_path_3, interest_path_4, \
-     interest_path_5
+    c1 = choose_case_path(recent_cases, delta = 0)
+    c2 = choose_case_path(recent_cases, delta = (recent_cases[-1]-recent_cases[-2]))
+    c3 = choose_case_path(recent_cases, delta = (recent_cases[-1] - recent_cases[0])/8)
+    c4 = choose_case_path(recent_cases, delta = 0, random_walk = True, stdev = recent_stdev)
+    c5 = choose_case_path(recent_cases, delta = 0, random_walk = True, stdev = recent_stdev, drift = big_trend)
+    i1 = make_interest_path(c1,recent_interest,coefs)
+    i2 = make_interest_path(c2,recent_interest,coefs)
+    i3 = make_interest_path(c3,recent_interest,coefs)
+    i4 = make_interest_path(c4,recent_interest,coefs)
+    i5 = make_interest_path(c5,recent_interest,coefs)
+    json = make_altair(c1,c2,c3,c4,c5,i1,i2,i3,i4,i5)
+    most_recent_cases = np.round(recent_cases[-1],2)
+    return json, most_recent_cases
 #    altair_json = make_altair(val1, val2, interest1, interst2, other stuf)
 
 def prediction_setup(phrase,state_df,state,state_pop):
@@ -40,7 +40,7 @@ def prediction_setup(phrase,state_df,state,state_pop):
     second_diff = daily.diff(1)
     recent_stdev = np.std(second_diff[60:])
     big_trend = (daily[-1] - daily[-61]) / 60
-    recent_cases = daily[9:]
+    recent_cases = daily[-9:]
     return recent_interest, recent_cases, recent_stdev, big_trend
 
 def choose_case_path(cases,delta=0, random_walk = False,stdev = 0, drift=0):
@@ -79,6 +79,24 @@ def make_interest_path(cases_path,interest,coefs):
         most_recent_step = new_step
     return interest_path
 
-#def make_altair(val1, val2, interest1, interest2):
-#    df = pd.DataFrame(val1,val2,interest1,interest2)
-#    return df
+def make_altair(c1,c2,c3,c4,c5,i1,i2,i3,i4,i5):
+    interests = np.round(np.concatenate((i1,i2,i3,i4,i5)),2)
+    covids = np.round(np.concatenate((c1,c2,c3,c4,c5)),2)
+    labels = np.concatenate((np.full(23,'Constant'),np.full(23,'Most recent change'),np.full(23,'Average change'),np.full(23,'Random walk'),np.full(23,'Random walk with drift')))
+    dates = np.tile([pd.to_datetime(datetime.datetime(2020,11,15) + datetime.timedelta(days=x)) for x in range(23)],5)
+    data = np.array([dates,interests,covids,labels]).transpose()
+
+    label_list = pd.DataFrame({'Type of Path': ['Constant', 'Most recent change', 'Average change','Random walk','Random walk with drift']})
+
+    df = pd.DataFrame(data, columns = ['Date','interest','covid','Type of Path'])
+
+
+    selection = alt.selection_multi(fields=['Type of Path'])
+    color = alt.condition(selection, alt.Color('Type of Path:N'), alt.value('lightgray'))
+    label_selector = alt.Chart(label_list).mark_rect().encode(y='Type of Path', color=color).add_selection(selection)
+    covid_chart = alt.Chart(df).mark_line().encode(alt.X('Date:T'), y=alt.Y('covid',title='Possible Covid Path'), color='Type of Path').transform_filter(selection)
+    interest_chart = alt.Chart(df).mark_line().encode(alt.X('Date:T'), y=alt.Y('interest',title='Predicted Interest Path'), color='Type of Path').transform_filter(selection)
+
+
+    json = (label_selector & (covid_chart | interest_chart)).to_json()
+    return json
