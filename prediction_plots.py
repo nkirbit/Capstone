@@ -89,7 +89,7 @@ def make_altair(c1,c2,c3,c4,c5,i1,i2,i3,i4,i5):
     label_list = pd.DataFrame({'Type of Path': ['Constant', 'Most recent change', 'Average change','Random walk','Random walk with drift']})
 
     df = pd.DataFrame(data, columns = ['Date','interest','covid','Type of Path'])
-
+    df = df[df['Date']>pd.to_datetime(datetime.datetime(2020,11,24))]
 
     selection = alt.selection_multi(fields=['Type of Path'])
     color = alt.condition(selection, alt.Color('Type of Path:N'), alt.value('lightgray'))
