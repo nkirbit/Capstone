@@ -1,10 +1,10 @@
-
+import numpy as np
 
 def do_some_analysis(model,state,business):
     hypothesis = '(lag(x, 1, num_states) = lag(x, 2, num_states) = \
     lag(x, 3, num_states) = lag(x, 4, num_states) = 0)'
     f_test = model.f_test(hypothesis)
-    f_p_value = f_test.pvalue[()]
+    f_p_value = np.round(f_test.pvalue[()],3)
     coefs = model.params[1:5]
     if f_p_value > 0.1:
         output_string = f'COVID-19 rates do not influence consumer interest in {business}.'

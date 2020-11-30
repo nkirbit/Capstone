@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Analysis for {{business_no_underscore}} in {{state}}</title>
+  <title>Analysis for {{business_no_underscore}}, {{state}}</title>
   <!-- Bootstrap core CSS -->
   <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -66,27 +66,27 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Results for {{business_no_underscore}} in {{state}}</a>
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Results for {{business_no_underscore}}, {{state}}</a>
     </div>
   </nav>
 
   <header class="bg-primary text-white">
     <div class="container text-center">
-      <h1>Results for {{state}}, {{business_no_underscore}}</h1>
-      <p class="lead">Below is a graph of the number of reported cases for {{state}} since the beginning of April.
-      The graph is interactive; you can select a time period on the bottom graph and the top graph
-      will automatically zoom to the same time period.</p>
-      <div id='vis'>
-      </div>
+      <h1>{{short_string}}</h1>
+      <p class="lead">{{long_string}}</p>
+      <p>See below for more detailed output, graphs, and predictions
     </div>
   </header>
+
 
   <section id="about">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <h2>About this page</h2>
-          <p class="lead">Let's try a table!</p>
+          <h2>Regression output</h2>
+          <p> Below are the coefficients of lagged COVID-19 variables in the
+            linear regression model. The units of COVID-19 are in new daily cases
+            per 100k population.
           <table class="styled-table">
               <thead>
                   <tr>
@@ -128,7 +128,12 @@
                   </tr>
               </tbody>
           </table>
+          <p>
+          The p-value for the hypothesis test that all of these coefficients are
+          jointly 0 is {{p_value}}.
+        </p>
         </div>
+
       </div>
     </div>
   </section>
@@ -137,8 +142,15 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <h2>Services we offer</h2>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
+          <h2>COVID-19 Graphs</h2>
+          <p class="lead">Below ares graph of the number of cases for {{state}} since the beginning of April.
+          <br><br> The top graph shows daily cases per 100k population, the middle graph shows unweighted daily cases,
+          and the bottom graph shows cumulative total cases.
+          <br><br>
+          The graphs are interactive; you can select a time period on the bottom graph and the top graph
+          will automatically zoom to the same time period.</p>
+          <div id='vis'>
+          </div>
         </div>
       </div>
     </div>

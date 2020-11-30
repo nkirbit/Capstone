@@ -6,6 +6,7 @@ import build_model
 import get_latest_covid
 import model_analysis
 import prediction_plots
+import generate_result_string
 
 app = Flask(__name__)
 app.vars={}
@@ -27,11 +28,12 @@ def analysis():
     table_values, f_p_value, output_string = model_analysis.do_some_analysis(model,app.vars['state'],app.vars['business'])
     altair_json, latest_date, state_df, state_pop = get_latest_covid.make_covid_plot(app.vars['state'])
     c1,c2,c3,c4,c5,i1,i2,i3,i4,i5 = prediction_plots.predictions(app.vars['business'],app.vars['state'],state_df,coefs,state_pop)
-    result_string = generate_result_string(model,app.vars['state'])
+    long_string, short_string = generate_result_string.generate_result_string(model,app.vars['state'],business_no_underscore,state_pop,state_df)
     return render_template('analysis_test.html',state =app.vars['state'], \
-    business = app.vars['business'], \
+    business = app.vars['business'],  p_value = f_p_value, \
     chart_json = altair_json, date_string = latest_date, \
     business_no_underscore = business_no_underscore, \
+    short_string = short_string, long_string = long_string, \
     t1 = round(table_values[0][0],3), t2 = round(table_values[1][0],3),\
     t3 = round(table_values[2][0],3), t4 = round(table_values[3][0],3), \
     t5 = round(table_values[0][1],3), t6 = round(table_values[1][1],3), \
