@@ -10,7 +10,7 @@ import generate_result_string
 
 app = Flask(__name__)
 app.vars={}
-
+### dadadf some comments so we can change stuff
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'GET':
